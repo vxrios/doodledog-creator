@@ -1,1 +1,1 @@
-This is a test.
+This is an avatar creator game for Doodle Dogs.
