@@ -1,3 +1,4 @@
+//test add
 function initialize(){
     window.addEventListener('resize', drawGame, false);
 }
