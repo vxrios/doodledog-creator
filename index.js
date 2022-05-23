@@ -73,11 +73,11 @@ function drawAvatar() {
       ctx.drawImage(images[i], 0,0,canSize,canSize);
     }
   }
-  drawButtons();
 }
 function changeAttributeCategory(attr){
   current_attribute = attr;
   document.getElementById("testprint").innerHTML= "current attribute: " + attr;
+  drawAttributeOptions();
 }
 
 function drawAttributeCategory(){
@@ -93,26 +93,29 @@ function drawAttributeCategory(){
   console.log(mydiv);
 }
 
-var slideIndex = 2;
+var options_index = 2;
 function drawAttributeOptions(){
   // remove all slides
-  for(var i=0; i<=slideIndex; i++){
-    $('.options_slick').slick('slickRemove',slideIndex - 1);
-    if (slideIndex !== 0){
-      slideIndex--;
-    }
-  }
+  // for(var i=0; i<=options_index; i++){
+  //   $('.options_slick').slick('slickRemove',options_index - 1);
+  //   if (options_index !== 0){
+  //     options_index--;
+  //   }
+  // }
+  $('.options_slick').slick('removeSlide', null, null, true);
+  console.log("all slides removed");
+  console.log(document.getElementById("options_slick"));
+
   //add slides for current attribute
   for(var i=0; i<attributes[current_attribute].length; i++){
-    slideIndex++;
+    options_index++;
     $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + '></h3></div>');
   }
-  
 
   console.log("load hair");
-  console.log(slideIndex);
-
+  console.log(options_index);
 }
+
 
 
 $(document).ready(function(){
@@ -130,14 +133,14 @@ $('.add-remove').slick({
   slidesToScroll: 3
 });
 $('.js-add-slide').on('click', function() {
-  slideIndex++;
-  $('.add-remove').slick('slickAdd','<div><h3>' + slideIndex + '</h3></div>');
+  options_index++;
+  $('.add-remove').slick('slickAdd','<div><h3>' + options_index + '</h3></div>');
 });
 
 $('.js-remove-slide').on('click', function() {
-  $('.add-remove').slick('slickRemove',slideIndex - 1);
-  if (slideIndex !== 0){
-    slideIndex--;
+  $('.add-remove').slick('slickRemove',options_index - 1);
+  if (options_index !== 0){
+    options_index--;
   }
 });
 

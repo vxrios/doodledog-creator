@@ -47,7 +47,8 @@ html, body{
     height:100%;
     margin: 0;
     background-color: pink;
-    font-family: Chalkduster, fantasy;
+    font-family: "Grandstander", Sans-serif;
+    /* font-family: Chalkduster, fantasy; */
 }
 h1{
     font-size: 7vw;
@@ -68,7 +69,13 @@ canvas{
     /* height: 100;
     width:100; */
 }
+button{
+    font-family: "Grandstander", Sans-serif;
+}
 #canvas1{
     border: 10px solid white;
     margin-bottom:10;
+}
+#button_div{
+    height:40;
 }
