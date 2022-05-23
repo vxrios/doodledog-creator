@@ -1,6 +1,7 @@
 //test add
 function initialize(){
     window.addEventListener('resize', drawGame, false);
+    drawGame();
 }
 var background = 0;
 var eyes = 0;
@@ -19,11 +20,12 @@ var attribute_count = 6;
 var current_attribute = 0;
 // bg.src = "layers/Background/blue-10.png"
 function drawGame(){
-  drawAvi();
-  drawAttributeMenu();
+  drawAvatar();
+  drawAttributeCategory();
   drawAttributeOptions();
 }
 function drawAvatar() {
+  // Make new canvas for avatar
   var can = document.getElementById("canvas1");
   var ctx = can.getContext("2d");
   
@@ -52,9 +54,10 @@ function drawAvatar() {
   nose_image.src = nose_src[nose]; 
   hair_image.src = hair_src[hair]; 
 
+  // array with each image in correct order
   images = [background_image, skin_image, eyes_image, mouth_image, mouth_image,nose_image,hair_image];
 
-  // Checks if every image has loaded and calls the draw avatar func
+  // Checks if every image has loaded and calls createAvatar()
   var images_loaded = 0;
   for(var i=0; i<images.length; i++){
     images[i].onload = function () {
@@ -64,60 +67,20 @@ function drawAvatar() {
       }
     }
   }
-  // console.log("here?");
-  // background_image.onload = function () {
-  //   images_loaded++;
-  //   console.log("heree");
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-  
-  // skin_image.onload = function () {
-  //   images_loaded++;
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-  
-  // eyes_image.onload = function () {
-  //   images_loaded++;
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-  // mouth_image.onload = function () {
-  //   images_loaded++;
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-  
-  // nose_image.onload = function () {
-  //   images_loaded++;
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-  
-  // hair_image.onload = function () {
-  //   images_loaded++;
-  //   if(images_loaded == attribute_count){
-  //     createAvatar();
-  //   }
-  // };
-
+  // Adds all appropriate attributes to the canvas in the correct order
   function createAvatar(){
-    ctx.drawImage(background_image, 0, 0, canSize, canSize);
-    ctx.drawImage(skin_image, 0, 0, canSize, canSize);
-    ctx.drawImage(eyes_image, 0, 0, canSize, canSize);
-    ctx.drawImage(mouth_image, 0, 0, canSize, canSize);
-    ctx.drawImage(nose_image, 0, 0, canSize, canSize);
-    ctx.drawImage(hair_image, 0, 0, canSize, canSize);
+    for(var i=0; i<images.length; i++){
+      ctx.drawImage(images[i], 0,0,canSize,canSize);
+    }
   }
   drawButtons();
 }
-function drawButtons(){
+function changeAttributeCategory(attr){
+  current_attribute = attr;
+  document.getElementById("testprint").innerHTML= "current attribute: " + attr;
+}
+
+function drawAttributeCategory(){
   var mydiv = document.getElementById('button_div');
   console.log(typeof(mydiv));
 
@@ -129,8 +92,9 @@ function drawButtons(){
   //mydiv.append(newdiv);
   console.log(mydiv);
 }
+
 var slideIndex = 2;
-function loadHair(){
+function drawAttributeOptions(){
   // remove all slides
   for(var i=0; i<=slideIndex; i++){
     $('.options_slick').slick('slickRemove',slideIndex - 1);

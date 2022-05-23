@@ -8,15 +8,20 @@
     <body onload="drawGame();">
         <h1>Create a Doodle Dog!</h1>
         <canvas id="canvas1"></canvas>
-        <div class = "menu_slick">
-            <button type="button" onclick="loadHair()">Hair</button>
-            <button type="button" onclick="testFunc()">What??</button>
-            <button type="button" onclick="testFunc()">What??</button>
+        <div class = "category_slick">
+            <!-- var attributes = [background_src, skin_src, eyes_src, mouth_src, nose_src, hair_src -->
+            <button type="button" onclick="changeAttributeCategory(5)">Hair</button>
+            <button type="button" onclick="changeAttributeCategory(4)">Noses</button>
+            <button type="button" onclick="changeAttributeCategory(3)">Mouth</button>
+            <button type="button" onclick="changeAttributeCategory(2)">Eyes</button>
+            <button type="button" onclick="changeAttributeCategory(1)">Skin</button>
+            <button type="button" onclick="changeAttributeCategory(0)">Background</button>
         </div>
         <div class="options_slick" id="button_div">
             <div><img src="layers/Hair/mohawk-10.png"></div>
             <div>your content</div>
         </div>
+        <div id="testprint">testprint</div>
     </body>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
