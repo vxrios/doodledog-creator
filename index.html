@@ -10,21 +10,23 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Grandstander&display=swap" rel="stylesheet">
     </head>
-    <body onload="drawGame();">
+    <body onload="initialize()">
         <h1>Create a Doodle Dog!</h1>
-        <canvas id="canvas1"></canvas>
-        <div class = "category_slick">
-            <!-- var attributes = [background_src, skin_src, eyes_src, mouth_src, nose_src, hair_src -->
-            <button type="button" onclick="changeAttributeCategory(5)">Hair</button>
-            <button type="button" onclick="changeAttributeCategory(4)">Noses</button>
-            <button type="button" onclick="changeAttributeCategory(3)">Mouth</button>
-            <button type="button" onclick="changeAttributeCategory(2)">Eyes</button>
-            <button type="button" onclick="changeAttributeCategory(1)">Skin</button>
-            <button type="button" onclick="changeAttributeCategory(0)">Background</button>
-        </div>
-        <div class="options_slick" id="button_div">
-            <div><img src="layers/Hair/mohawk-10.png"></div>
-            <div>your content</div>
+        <div class="game">
+            <canvas id="canvas1"></canvas>
+            <div class = "category_slick" id="category_div">
+                <!-- var attributes = [background_src, skin_src, eyes_src, mouth_src, nose_src, hair_src -->
+                <button type="button" onclick="changeAttributeCategory(5)" class="category_button">Hair</button>
+                <button type="button" onclick="changeAttributeCategory(4)" class="category_button">Noses</button>
+                <button type="button" onclick="changeAttributeCategory(3)" class="category_button">Mouth</button>
+                <button type="button" onclick="changeAttributeCategory(2)" class="category_button">Eyes</button>
+                <button type="button" onclick="changeAttributeCategory(1)" class="category_button">Skin</button>
+                <button type="button" onclick="changeAttributeCategory(0)" class="category_button">Background</button>
+            </div>
+            <div class="options_slick" id="options_div">
+                <div><img src="layers/Hair/mohawk-10.png"></div>
+                <div>your content</div>
+            </div>
         </div>
         <div id="testprint">testprint</div>
     </body>

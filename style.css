@@ -73,9 +73,57 @@ button{
     font-family: "Grandstander", Sans-serif;
 }
 #canvas1{
-    border: 10px solid white;
+    border: 10px solid wh;
     margin-bottom:10;
 }
-#button_div{
-    height:40;
+#options_div{
+    height:fit-content;
 }
+
+.category_button {
+    /* height:fit-content; */
+    background-color: #04AA6D; 
+    border: solid;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 7vw;
+    margin: 0 auto;
+    /* display: inline-flex; */
+    transition-duration: 0.3s;
+    cursor: pointer;
+    padding: 3;
+    /* width: fit-content; */
+}
+#category_div {
+    height:fit-content;
+    border: solid;
+    text-decoration: none;
+    /* font-size: 16px; */
+    margin: 0 auto;
+    /* display: inline-flex; */
+    transition-duration: 0.3s;
+    cursor: pointer;
+    padding: 2;
+}
+#category_div button:hover{
+    background-color: #009688;
+}
+
+.game {
+    background-color: white;
+    width: 85%;
+    margin: 0 auto;
+
+}
+/* .slick-prev:before {
+    content: "<";
+    color: red;
+    font-size: 30px;
+  }
+  
+  .slick-next:before {
+    content: ">";
+    color: red;
+    font-size: 30px;
+  } */

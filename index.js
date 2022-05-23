@@ -3,12 +3,8 @@ function initialize(){
     window.addEventListener('resize', drawGame, false);
     drawGame();
 }
-var background = 0;
-var eyes = 0;
-var hair = 1;
-var nose = 0;
-var mouth = 0;
-var skin = 0;
+
+var attribute_names = ["Background", "Skin", "Eyes", "Mouth", "Nose", "Hair"];
 var background_src = ["layers/Background/blue-10.png","layers/Background/pink-10.png"];
 var eyes_src = ["layers/Eyes/black-40.png"];
 var hair_src = ["layers/Hair/mohawk-10.png", "layers/Hair/poof-25.png", "layers/Hair/spiked-30.png"];
@@ -16,8 +12,10 @@ var mouth_src = ["layers/Mouth/lips-20.png"];
 var nose_src = ["layers/Nose/nose-100.png"];
 var skin_src = ["layers/Skin/brown-50.png"];
 var attributes = [background_src, skin_src, eyes_src, mouth_src, nose_src, hair_src]
+var current_avatar_attributes = [0, 0, 0, 0, 0, 0];
 var attribute_count = 6;
 var current_attribute = 0;
+var current_option = 0;
 // bg.src = "layers/Background/blue-10.png"
 function drawGame(){
   drawAvatar();
@@ -39,25 +37,16 @@ function drawAvatar() {
   ctx.canvas.height = canSize;
   ctx.fillRect(0, 0, canSize, canSize);
 
-  // Load the image for each avatar attribute
-  background_image = new Image();
-  skin_image = new Image();
-  eyes_image = new Image();
-  mouth_image = new Image();
-  nose_image = new Image();
-  hair_image = new Image();
   
-  background_image.src = background_src[background];
-  skin_image.src = skin_src[skin];
-  eyes_image.src = eyes_src[eyes];
-  mouth_image.src = mouth_src[mouth]; 
-  nose_image.src = nose_src[nose]; 
-  hair_image.src = hair_src[hair]; 
+  // create an array with each attribute in the correct order
+  images = []
+  for(var i=0; i<current_avatar_attributes.length; i++){
+    img = new Image();
+    img.src = attributes[i][current_avatar_attributes[i]];
+    images.push(img);
+  }  
 
-  // array with each image in correct order
-  images = [background_image, skin_image, eyes_image, mouth_image, mouth_image,nose_image,hair_image];
-
-  // Checks if every image has loaded and calls createAvatar()
+  // Checks if every image has loaded, if yes then it calls createAvatar()
   var images_loaded = 0;
   for(var i=0; i<images.length; i++){
     images[i].onload = function () {
@@ -74,120 +63,72 @@ function drawAvatar() {
     }
   }
 }
-function changeAttributeCategory(attr){
-  current_attribute = attr;
-  document.getElementById("testprint").innerHTML= "current attribute: " + attr;
-  drawAttributeOptions();
-}
 
 function drawAttributeCategory(){
   var mydiv = document.getElementById('button_div');
   console.log(typeof(mydiv));
 
-  var newdiv = document.createElement("div");
-  newdiv.innerHTML = "yoyo";
-  tempbut = new Image();
-  tempbut.src = attributes[current_attribute][0];
-  //console.log(attributes[current_attribute])
-  //mydiv.append(newdiv);
+  // var newdiv = document.createElement("div");
+  // newdiv.innerHTML = "yoyo";
+  // tempbut = new Image();
+  // tempbut.src = attributes[current_attribute][0];
+  // //console.log(attributes[current_attribute])
+  // //mydiv.append(newdiv);
   console.log(mydiv);
 }
 
-var options_index = 2;
+//var options_index = 2;
 function drawAttributeOptions(){
   // remove all slides
-  // for(var i=0; i<=options_index; i++){
-  //   $('.options_slick').slick('slickRemove',options_index - 1);
-  //   if (options_index !== 0){
-  //     options_index--;
-  //   }
-  // }
   $('.options_slick').slick('removeSlide', null, null, true);
   console.log("all slides removed");
   console.log(document.getElementById("options_slick"));
 
   //add slides for current attribute
   for(var i=0; i<attributes[current_attribute].length; i++){
-    options_index++;
-    $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + '></h3></div>');
+    //options_index++;
+    $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')"></h3></div>');
   }
-
   console.log("load hair");
-  console.log(options_index);
+  //console.log(options_index);
+}
+function changeAttributeCategory(attr){
+  current_attribute = attr;
+  document.getElementById("testprint").innerHTML= "current attribute: " + attr;
+  drawAttributeOptions();
 }
 
+function changeAttributeOption(option){
+  current_option = option;
+  current_avatar_attributes[current_attribute] = option;
+  drawAvatar();
+  console.log("option: " + option);
+}
 
+// jquery stuff
 
 $(document).ready(function(){
   $('.options_slick').slick({
-    dots: true,
-    infinite: true,
+    dots: false,
+    infinite: false,
     speed: 300,
     slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    // variableWidth: true
   });
 });
 
-$('.add-remove').slick({
-  slidesToShow: 3,
-  slidesToScroll: 3
-});
-$('.js-add-slide').on('click', function() {
-  options_index++;
-  $('.add-remove').slick('slickAdd','<div><h3>' + options_index + '</h3></div>');
-});
-
-$('.js-remove-slide').on('click', function() {
-  $('.add-remove').slick('slickRemove',options_index - 1);
-  if (options_index !== 0){
-    options_index--;
-  }
+$(document).ready(function(){
+  $('.category_slick').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    variableWidth: true,
+    // variableHeight:true
+    prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+    nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+  });
 });
 
-//initialize();
-
-//dump
-// from draw()
-//   var background = new Image();
-//   background.onload = function () {
-//     ctx.drawImage(background, 0, 0, canSize, canSize);
-//   };
-
-//   background.src = "layers/skin/brown-50.png";
-// var bg = new Image();
-
-//failed loop in draw()
-  // for(var i = 0; i<attributes.length; i++){
-  //   image = new Image();
-  //   image.onload = function(){
-  //     ctx.drawImage(image, 0, 0, canSize, canSize);
-  //   }
-  //   image.src = attributes[i][0];
-  //   console.log(attributes[i][0]);
-  // }
-
-
-
-    // eyes_image.onload = function () {
-  //   ctx.drawImage(eyes_image, 0, 0, canSize, canSize);
-  // };
-  // draw mouth
-  // mouth_image.onload = function () {
-  //   ctx.drawImage(mouth_image, 0, 0, canSize, canSize);
-  // };
-  
-  // draw nose
-  // nose_image.onload = function () {
-  //   ctx.drawImage(nose_image, 0, 0, canSize, canSize);
-  // };
-
-   //images = [background_image, skin_image, eyes_image, mouth_image, mouth_image,nose_image,hair_image];
-
-  // for(var i=0; i<images.length; i++){
-  //   images[i].onload = function () {
-  //     images_loaded++;
-  //     if(images_loaded == attribute_count){
-  //       createAvatar();
-  //     }
-  //   }
-  // }
