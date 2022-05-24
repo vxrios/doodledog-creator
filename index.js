@@ -5,7 +5,7 @@ function initialize(){
 }
 
 var attribute_names = ["Background", "Skin", "Eyes", "Mouth", "Nose", "Hair"];
-var background_src = ["layers/Background/blue-10.png","layers/Background/pink-10.png"];
+var background_src = ["layers/Background/blue-10.png","layers/Background/pink-10.png","layers/Background/blue-10.png","layers/Background/pink-10.png","layers/Background/blue-10.png","layers/Background/pink-10.png","layers/Background/blue-10.png","layers/Background/pink-10.png"];
 var eyes_src = ["layers/Eyes/black-40.png"];
 var hair_src = ["layers/Hair/mohawk-10.png", "layers/Hair/poof-25.png", "layers/Hair/spiked-30.png"];
 var mouth_src = ["layers/Mouth/lips-20.png"];
@@ -28,11 +28,17 @@ function drawAvatar() {
   var ctx = can.getContext("2d");
   
   // Set the dimension of the canvas
-  var canSize = window.innerWidth;
-  if(window.innerWidth > window.innerHeight){
-      canSize = window.innerHeight;
+  var canSize = window.innerHeight*.6;
+  if(window.innerHeight*.6 > window.innerWidth){
+      canSize = window.innerWidth;
   }
-  canSize = canSize*.80
+  canSize = canSize*.75
+  // var canSize = window.innerWidth;
+  // if(window.innerWidth > window.innerHeight){
+  //     canSize = window.innerHeight;
+  // }
+  // canSize = canSize*.75
+  
   ctx.canvas.width  = canSize;
   ctx.canvas.height = canSize;
   ctx.fillRect(0, 0, canSize, canSize);
@@ -77,7 +83,6 @@ function drawAttributeCategory(){
   console.log(mydiv);
 }
 
-//var options_index = 2;
 function drawAttributeOptions(){
   // remove all slides
   $('.options_slick').slick('removeSlide', null, null, true);
@@ -86,11 +91,9 @@ function drawAttributeOptions(){
 
   //add slides for current attribute
   for(var i=0; i<attributes[current_attribute].length; i++){
-    //options_index++;
     $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')"></h3></div>');
   }
   console.log("load hair");
-  //console.log(options_index);
 }
 function changeAttributeCategory(attr){
   current_attribute = attr;
@@ -109,23 +112,26 @@ function changeAttributeOption(option){
 
 $(document).ready(function(){
   $('.options_slick').slick({
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     // variableWidth: true
+    prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+    nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+    
   });
 });
 
 $(document).ready(function(){
   $('.category_slick').slick({
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 4,
-    slidesToScroll: 2,
-    variableWidth: true,
+    slidesToScroll: 1,
+    //variableWidth: true,
     // variableHeight:true
     prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
     nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
