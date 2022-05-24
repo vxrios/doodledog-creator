@@ -7,6 +7,9 @@ html, body{
     margin: 0;
     background-color: pink;
     font-family: "Grandstander", Sans-serif;
+    background-image:url(img/Doodle-Dogs-Compilation-Background-min.png);
+    background-repeat:repeat;
+    background-size: 100%;
     /* font-family: Chalkduster, fantasy; */
 }
 h1{
@@ -41,10 +44,12 @@ button{
 #options_div{
     height:fit-content;
     align-items: center;
-    center-padding:0px;
+    
 }
 #options_div img{
+    display: inline-block;
     height:12vh;
+    min-width: 12vh;
     border: solid 3px rgb(197, 197, 197);
     transition-duration: 0.3s;
     display: flex;
@@ -61,22 +66,20 @@ button{
     color: white;
     text-align: center;
     text-decoration: none;
-    font-size: 20px;
-    margin: 0 auto;
+    font-size: min(4vw, 20px);
+    /* margin: auto; */
+    padding-top: 5;
+    padding-bottom: 5;
+    padding-left:10;
+    padding-right:10;
     /* display: inline-flex; */
     transition-duration: 0.3s;
     cursor: pointer;
-    padding: 3;
 }
 #category_div {
     height:fit-content;
-    /* border: solid; */
-    margin: 0 auto;
-    transition-duration: 0.3s;
-    cursor: pointer;
-    padding: 2;
-    padding-top:0;
-    padding-bottom:0;
+    justify-content: center;
+    display: flex;
 }
 #category_div button:hover{
     /* background-color: #009688; */
@@ -86,6 +89,16 @@ button{
 .game {
     background-color: white;
     width: 85%;
-    margin: 0 auto;
+    margin: auto;
     padding:1%
+}
+.header{
+    height:fit-content;
+    background-color: white;
+    /* background-image: url(img/doodle-dogs-text-logo.png); */
+    /* background-size:100%; */
+}
+.header img{
+    height:5vh;
+    padding-left: 3%;
 }
