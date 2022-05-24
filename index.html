@@ -14,15 +14,17 @@
         <div class = "header">
             <img src="img/doodle-dogs-text-logo.png">
         </div>
-        <h1>Create a Doodle Dog!</h1>
+        <div class="title">
+            <h1>Create your own Doodle Dog!</h1>
+        </div>
         <div class="game">
             <canvas id="canvas1"></canvas>
             <div class = "category_slick" id="category_div">
-                <button type="button" onclick="changeAttributeCategory(2)" class="category_button">Fur</button>
-                <button type="button" onclick="changeAttributeCategory(4)" class="category_button">Hat</button>
-                <button type="button" onclick="changeAttributeCategory(2)" class="category_button">Shirt</button>
-                <button type="button" onclick="changeAttributeCategory(1)" class="category_button">Face</button>
-                <button type="button" onclick="changeAttributeCategory(0)" class="category_button">Background</button>
+                <button type="button" onclick="changeAttributeCategory(1,0)" class="category_button">Fur</button>
+                <button type="button" onclick="changeAttributeCategory(4,1)" class="category_button">Hat</button>
+                <button type="button" onclick="changeAttributeCategory(2,2)" class="category_button">Shirt</button>
+                <button type="button" onclick="changeAttributeCategory(3,3)" class="category_button">Face</button>
+                <button type="button" onclick="changeAttributeCategory(0,4)" class="category_button">Background</button>
             </div>
             <div class="options_slick" id="options_div">
                 <div><img src="layers/Hair/mohawk-10.png"></div>

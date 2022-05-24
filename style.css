@@ -13,7 +13,7 @@ html, body{
     /* font-family: Chalkduster, fantasy; */
 }
 h1{
-    font-size: 7vw;
+    font-size: 6vw;
     text-align: center;
     background-color: aliceblue;
     margin-left:10;
@@ -44,7 +44,14 @@ button{
 #options_div{
     height:fit-content;
     align-items: center;
-    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 10s ease;
+    -webkit-transition: opacity 1s ease;
+}
+#options_div.slick-initialized {
+    visibility: visible;
+    opacity: 1;    
 }
 #options_div img{
     display: inline-block;
@@ -53,11 +60,14 @@ button{
     border: solid 3px rgb(197, 197, 197);
     transition-duration: 0.3s;
     display: flex;
+
 }
+
 #options_div img:hover{
     /* background-color: #009688; */
     opacity: 70%;
 }
+
 
 .category_button {
     /* height:fit-content; */
@@ -85,12 +95,21 @@ button{
     /* background-color: #009688; */
     opacity: 50%;
 }
+#category_div .button:active, .active{
+    /* background-color: #009688; */
+    opacity: 60%;
+}
 
 .game {
     background-color: white;
     width: 85%;
     margin: auto;
-    padding:1%
+    padding:1%;
+    padding-bottom:10%;
+    padding-left: 5%;
+    padding-right:5%;
+    padding-top:5%;
+    opacity: 10%;
 }
 .header{
     height:fit-content;
@@ -102,3 +121,4 @@ button{
     height:5vh;
     padding-left: 3%;
 }
+

@@ -24,10 +24,13 @@ var current_avatar_attributes = [0, 0, 0, 0, 0];
 var attribute_count = 5;
 var current_attribute = 0;
 var current_option = 0;
+var current_button = 0;
+
 // bg.src = "layers/Background/blue-10.png"
 function drawGame(){
   drawAvatar();
-  drawAttributeCategory();
+  //drawAttributeCategory();
+  changeAttributeCategory(1,0);
   drawAttributeOptions();
 }
 function drawAvatar() {
@@ -35,17 +38,12 @@ function drawAvatar() {
   var can = document.getElementById("canvas1");
   var ctx = can.getContext("2d");
   
-  // Set the dimension of the canvas
+  // Calculate & set the dimension of the canvas
   var canSize = window.innerHeight*.6;
   if(window.innerHeight*.6 > window.innerWidth){
       canSize = window.innerWidth;
   }
   canSize = canSize*.75
-  // var canSize = window.innerWidth;
-  // if(window.innerWidth > window.innerHeight){
-  //     canSize = window.innerHeight;
-  // }
-  // canSize = canSize*.75
   
   ctx.canvas.width  = canSize;
   ctx.canvas.height = canSize;
@@ -78,33 +76,45 @@ function drawAvatar() {
   }
 }
 
-function drawAttributeCategory(){
-  var mydiv = document.getElementById('button_div');
-
-  // var newdiv = document.createElement("div");
-  // newdiv.innerHTML = "yoyo";
-  // tempbut = new Image();
-  // tempbut.src = attributes[current_attribute][0];
-  // //console.log(attributes[current_attribute])
-  // //mydiv.append(newdiv);
-  
-}
 
 function drawAttributeOptions(){
   // remove all slides
   $('.options_slick').slick('removeSlide', null, null, true);
-  console.log("all slides removed");
-  console.log(document.getElementById("options_slick"));
-
+  // $('.options_slick').slick('destroy');
   //add slides for current attribute
+  // slickOptions();
+
   for(var i=0; i<attributes[current_attribute].length; i++){
     $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')"></h3></div>');
   }
+
+  // trying to lazy load the images when the category changes
+  const images = document.getElementById("options_div").getElementsByTagName("img");
+  for (let image of images) {
+    image.addEventListener("load", fadeImg);
+    image.style.opacity = "0";
+  }
+  console.log(images);
+  function fadeImg () {
+    this.style.transition = "opacity 2s";
+    this.style.opacity = "1";
+  }
   console.log("load hair");
 }
-function changeAttributeCategory(attr){
+
+function changeAttributeCategory(attr, butn){
+  // change old button to normal color
+  buttons = document.getElementsByClassName("category_slick")[0].getElementsByTagName("button");
+  buttons[current_button].classList.remove('active');
+
+  //change pressed button to new color
+  buttons[butn].classList.add('active');
+
+  //update current vars
   current_attribute = attr;
-  document.getElementById("testprint").innerHTML= "current attribute: " + attr;
+  current_button = butn;
+
+  //load the attributes for the new category
   drawAttributeOptions();
 }
 
@@ -112,11 +122,25 @@ function changeAttributeOption(option){
   current_option = option;
   current_avatar_attributes[current_attribute] = option;
   drawAvatar();
-  console.log("option: " + option);
 }
 
 // jquery stuff
 
+function slickOptions(){
+  $(document).ready(function(){
+    $('.options_slick').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      lazyLoad: 'ondemand',
+      prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+      nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+      centerMode: true
+    });
+  });
+}
 $(document).ready(function(){
   $('.options_slick').slick({
     dots: false,
@@ -125,8 +149,8 @@ $(document).ready(function(){
     slidesToShow: 4,
     slidesToScroll: 1,
     // lazyLoad: 'progressive',
-    prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-    nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+    // prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+    // nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
     centerMode: true
   });
 });
