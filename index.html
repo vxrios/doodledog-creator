@@ -14,11 +14,16 @@
         <div class = "header">
             <img src="img/doodle-dogs-text-logo.png">
         </div>
-        <div class="title">
-            <h1>Create your own Doodle Dog!</h1>
-        </div>
         <div class="game">
-            <canvas id="canvas1"></canvas>
+            <div class="title">
+                <h1>Create your own Doodle Dog!</h1>
+            </div>
+            <div class="randomize_wrapper">
+                <button type="button" class="randomize_button" class="category_button" onclick="randomize()">Randomize</button>
+            </div>
+            <div class="canvas_wrapper">
+                <canvas id="canvas1"></canvas>
+            </div>
             <div class = "category_slick" id="category_div">
                 <button type="button" onclick="changeAttributeCategory(1,0)" class="category_button">Fur</button>
                 <button type="button" onclick="changeAttributeCategory(4,1)" class="category_button">Hat</button>
@@ -30,8 +35,13 @@
                 <div><img src="layers/Hair/mohawk-10.png"></div>
                 <div>your content</div>
             </div>
+            <div class="lower_buttons">
+                <button type="button" id="download_button" onclick="downloadAvatar()">Download Image ⬇</button>
+                <!-- <a download="img.png" id="download_button" onclick="downloadAvatar()">Download Image ⬇</button>  -->
+            </div>
         </div>
         <div id="testprint">testprint</div>
+        <!-- <img id="existing-image-id" src="img/doodle-dogs-text-logo.png"> -->
     </body>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

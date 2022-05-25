@@ -1,6 +1,7 @@
 //test add
 function initialize(){
     window.addEventListener('resize', drawGame, false);
+    randomize();
     drawGame();
 }
 
@@ -29,14 +30,14 @@ var current_button = 0;
 // bg.src = "layers/Background/blue-10.png"
 function drawGame(){
   drawAvatar();
-  //drawAttributeCategory();
   changeAttributeCategory(1,0);
   drawAttributeOptions();
 }
+// Make new canvas for avatar
+var can = document.getElementById("canvas1");
+var ctx = can.getContext("2d");
+
 function drawAvatar() {
-  // Make new canvas for avatar
-  var can = document.getElementById("canvas1");
-  var ctx = can.getContext("2d");
   
   // Calculate & set the dimension of the canvas
   var canSize = window.innerHeight*.6;
@@ -80,26 +81,23 @@ function drawAvatar() {
 function drawAttributeOptions(){
   // remove all slides
   $('.options_slick').slick('removeSlide', null, null, true);
-  // $('.options_slick').slick('destroy');
+
   //add slides for current attribute
-  // slickOptions();
 
   for(var i=0; i<attributes[current_attribute].length; i++){
-    $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')"></h3></div>');
+    $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')" class="option_button"></h3></div>');
   }
 
   // trying to lazy load the images when the category changes
-  const images = document.getElementById("options_div").getElementsByTagName("img");
-  for (let image of images) {
-    image.addEventListener("load", fadeImg);
-    image.style.opacity = "0";
-  }
-  console.log(images);
-  function fadeImg () {
-    this.style.transition = "opacity 2s";
-    this.style.opacity = "1";
-  }
-  console.log("load hair");
+  // const images = document.getElementById("options_div").getElementsByTagName("img");
+  // for (let image of images) {
+  //   image.addEventListener("load", fadeImg);
+  //   image.style.opacity = "0";
+  // }
+  // function fadeImg () {
+  //   this.style.transition = "opacity 2s";
+  //   this.style.opacity = "1";
+  // }
 }
 
 function changeAttributeCategory(attr, butn){
@@ -123,24 +121,31 @@ function changeAttributeOption(option){
   current_avatar_attributes[current_attribute] = option;
   drawAvatar();
 }
+function randomize(){
+  for(var i=0; i<attributes.length; i++){
+    var max = attributes[i].length -1;
+    var random_num = Math.floor(Math.random()*max);
+    current_avatar_attributes[i] = random_num;
+    drawAvatar();
+  }
+}
+
+function downloadAvatar(){
+
+  const canvas = document.getElementById('canvas1');
+  const img = canvas.toDataURL('image/png');
+
+  var a = $("<a>")
+    .attr("href", img)
+    .attr("download", "doodledog.png")
+    .appendTo("body");
+  a[0].click();
+  a.remove();
+}
 
 // jquery stuff
 
-function slickOptions(){
-  $(document).ready(function(){
-    $('.options_slick').slick({
-      dots: false,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      lazyLoad: 'ondemand',
-      prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-      nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-      centerMode: true
-    });
-  });
-}
+//
 $(document).ready(function(){
   $('.options_slick').slick({
     dots: false,
@@ -154,18 +159,4 @@ $(document).ready(function(){
     centerMode: true
   });
 });
-
-// $(document).ready(function(){
-//   $('.category_slick').slick({
-//     dots: false,
-//     infinite: false,
-//     speed: 300,
-//     slidesToShow: 4,
-//     slidesToScroll: 1,
-//     variableWidth: true,
-//     // variableHeight:true
-//     prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-//     nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
-//   });
-// });
 
