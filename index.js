@@ -74,7 +74,6 @@ function drawAttributeOptions(){
   $('.options_slick').slick('removeSlide', null, null, true);
 
   //add slides for current attribute
-
   for(var i=0; i<attributes[current_attribute].length; i++){
     $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')" class="option_button"></h3></div>');
   }
@@ -174,17 +173,17 @@ function downloadAvatar(){
 // jquery stuff
 
 //
-$(document).ready(function(){
-  $('.options_slick').slick({
-    dots: false,
-    infinite: false,
-    speed: 800,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    // lazyLoad: 'progressive',
-    // prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-    // nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-    centerMode: false
-  });
-});
+// $(document).ready(function(){
+//   $('.options_slick').slick({
+//     dots: false,
+//     infinite: false,
+//     speed: 800,
+//     slidesToShow: 4,
+//     slidesToScroll: 4,
+//     // lazyLoad: 'progressive',
+//     // prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+//     // nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+//     centerMode: false
+//   });
+// });
 

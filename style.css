@@ -5,7 +5,9 @@
     --green: #68e65c;
     --white: #f6f1e6;
     --gray: #999792;
+    --lightgray:#d6dbdb;
     --blue: #3cb0f1;
+
 }
 
 html, body{
@@ -175,10 +177,10 @@ button:hover:not(.slick-next):not(.slick-prev){
 
 
 /* the options */
-#options_div{
+/* #options_div{
     height:fit-content;
-}
-#options_div img{
+} */
+/* #options_div img{
     display: inline-block;
     height:12vw;
     border: solid 3px white;
@@ -187,11 +189,39 @@ button:hover:not(.slick-next):not(.slick-prev){
     display: flex;
     background-color: #9153ff;
     border-radius:8px;
-}
+} */
 #options_div img:hover{
     /* transition: background-color 10s ease; */
     background-color: rgba(251,161,215,255);
 }
+div.options_slick {
+    margin:1vh;
+    background-color: var(--lightgray);
+    width: 80vw;
+    height:fit-content;
+    display: flex;
+    flex-wrap: no-wrap;
+    overflow-x: auto;
+    border-radius:8px;
+    /* margin: 20px; */
+}
+div.options_slick img{
+    display: inline-block;
+    display: inline-block;
+    height:12vw;
+    border: solid 3px white;
+    transition: background-color 10s ease;
+    transition-duration: 0.3s ;
+    display: flex;
+    background-color: var(--purple);
+    border-radius:8px;
+    margin-left:1vh;
+    margin-right:1vh;
+    /* margin-bottom:0.5vh; */
+    margin:1vh;
+}
+
+
 /* slick img */
 .slick-slide img{
     display:block;
