@@ -188,7 +188,7 @@ div.options_slick {
     height:fit-content;
     display: flex;
     flex-wrap: no-wrap;
-    overflow-x: auto;
+    overflow-x: scroll;
     border-radius:8px;
     padding:min(1vh,1vw);
 }
@@ -212,6 +212,27 @@ div.options_slick .active{
 }
 
 
+/* option scroll bar custimization */
+/* width */
+.options_slick::-webkit-scrollbar {
+    height: min(2vh,2vw);
+}
+
+/* Track */
+.options_slick::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+.options_slick::-webkit-scrollbar-thumb{
+    background: var(--blue); 
+}
+
+/* Handle on hover */
+.options_slick::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 
 /* download image button */
 .lower_buttons{
@@ -225,5 +246,3 @@ div.options_slick .active{
     font-size: min(4vw, 4vh);
     padding:2%;
 }
-
-
