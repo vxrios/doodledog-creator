@@ -1,6 +1,6 @@
 //test add
 function initialize(){
-    window.addEventListener('resize', drawGame, false);
+    // window.addEventListener('resize', drawGame, false);
     randomize();
     drawGame();
 }
