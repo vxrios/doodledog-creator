@@ -4,7 +4,7 @@ html, body{
     width: 100%;
     height:100%;
     margin: 0;
-    background-color: pink;
+    background-color: rgba(251,161,215,255);
     font-family: "Grandstander", Sans-serif;
     background-image:url(img/Doodle-Dogs-Compilation-Background-min.png);
     background-repeat: repeat;
@@ -127,7 +127,7 @@ button:hover:not(.slick-next):not(.slick-prev){
 }
 .header{
     height:fit-content;
-    background-color: white;
+    background-color: rgba(251,161,215,255);
     top:0;
     position:fixed;
     width:100%;
@@ -189,12 +189,13 @@ button:hover:not(.slick-next):not(.slick-prev){
 
 .slick-prev:before {
     color: rgb(60,176,241) !important;
-    margin-right: 1vw;
+    /* margin-right: 1vw; */
+    font-size: 4vw !important;
 }
 
 .slick-next:before {
   color: rgb(60,176,241) !important;
-  margin-left: 1vw;
+  font-size: 4vw !important; 
 }
 .slick-slide{
     margin: 0 auto;
