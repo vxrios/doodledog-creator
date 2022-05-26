@@ -191,11 +191,13 @@ button:hover:not(.slick-next):not(.slick-prev){
     color: rgb(60,176,241) !important;
     /* margin-right: 1vw; */
     font-size: 4vw !important;
+    z-index:999;
 }
 
 .slick-next:before {
   color: rgb(60,176,241) !important;
   font-size: 4vw !important; 
+  z-index:999;
 }
 .slick-slide{
     margin: 0 auto;
@@ -212,3 +214,5 @@ button:hover:not(.slick-next):not(.slick-prev){
     align-items: center;
     justify-content: center;
   } */
+
+  
