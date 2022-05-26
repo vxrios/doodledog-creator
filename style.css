@@ -1,4 +1,12 @@
-/* pink: rgba(251,161,215,255)     */
+/* variables (colors) */
+:root{
+    --purple: #9153ff;
+    --pink: #ff9fd7;
+    --green: #68e65c;
+    --white: #f6f1e6;
+    --gray: #999792;
+    --blue: #3cb0f1;
+}
 
 html, body{
     margin: 0;
@@ -32,14 +40,14 @@ button{
     border-radius:8px;   
 }
 button:hover:not(.slick-next):not(.slick-prev){
-    transform: scale(1.1)
+    transform: scale(1.1);
 }
 
 
 /* the header with the doodle dogs logo */
 .header{
     height:fit-content;
-    background-color: rgba(251,161,215,255);
+    background-color: var(--pink);
     top:0;
     position:fixed;
     width:100%;
@@ -90,16 +98,16 @@ button:hover:not(.slick-next):not(.slick-prev){
    text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
-    #f29cbb 15%,
-    #9153ff 29%, 
-    #3cb0f1 67%,
-    #f29cbb 100%
+    var(--pink) 15%,
+    var(--purple) 20%, 
+    var(--blue) 67%,
+    var(--pink) 100%
   );
   
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
-  color: #fff;
+  color: var(--white);
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -121,6 +129,8 @@ button:hover:not(.slick-next):not(.slick-prev){
     padding-bottom:5vh;
     padding-left: 6vw;
     padding-right:6vw;
+    /* padding-left: min(6vw,6vh);
+    padding-right: min(6vw,6vh); */
     padding-top:4vh;
     border-radius:8px;
     margin-bottom: 10vh;
@@ -135,8 +145,9 @@ button:hover:not(.slick-next):not(.slick-prev){
 }
 .randomize_wrapper button{
     font-size: min(2.5vw, 20px);
-    padding:2%;
-    margin:0
+    padding:1vh;
+    margin:0;
+    background-color:var(--gray);
 }
 
 /* the canvas for the avatar */
@@ -174,7 +185,7 @@ button:hover:not(.slick-next):not(.slick-prev){
     transition: background-color 10s ease;
     transition-duration: 0.3s ;
     display: flex;
-    background-color: rgba(228,216,194,255);
+    background-color: #9153ff;
     border-radius:8px;
 }
 #options_div img:hover{
@@ -190,7 +201,6 @@ button:hover:not(.slick-next):not(.slick-prev){
 .slick-prev:before {
     color: rgb(60,176,241) !important;
     font-size: 5vw !important;
-    z-index:999;
 }
 .slick-next:before {
   color: rgb(60,176,241) !important;
@@ -210,3 +220,5 @@ button:hover:not(.slick-next):not(.slick-prev){
     font-size: min(4vw, 30px);
     padding:2%;
 }
+
+
