@@ -3,7 +3,7 @@ function initialize(){
     // window.addEventListener('resize', drawGame, false);
     randomize();
     drawGame();
-    initializeActiveOptions();
+    initOptionActiveClass();
 }
 
 var attribute_names = ["Background", "Fur", "Shirt", "Face", "Hat"];
@@ -113,33 +113,49 @@ function changeAttributeCategory(attr, butn){
 
 function changeAttributeOption(option){
   // remove active class to current attribute
-  var btn = attribute_to_button[current_attribute];
-  var atr = current_avatar_attributes[current_attribute];
-  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
-  current_image.classList.remove("active");
+  removeOptionActiveClass();
 
   // change current attribute
   current_option = option;
   current_avatar_attributes[current_attribute] = option;
 
   // add active class to current attribute
-  var btn = attribute_to_button[current_attribute];
-  var atr = current_avatar_attributes[current_attribute];
-  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
-  current_image.classList.add("active");
+  addOptionActiveClass();
 
   // redraw avatar
   drawAvatar();
 }
-// function initializeActiveOptions();
+function initOptionActiveClass(){
+  for(var i=0; i<attribute_count; i++){ //each attribute
+    // select each category
+    //then make the image correspoding to current_attribute[i] class active
+    var btn = attribute_to_button[i];
+    var atr = current_avatar_attributes[i];
+    var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
+    current_image.classList.add("active");
+  }
+}
+function removeOptionActiveClass(){
+  var btn = attribute_to_button[current_attribute];
+  var atr = current_avatar_attributes[current_attribute];
+  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
+  current_image.classList.remove("active");
+}
+function addOptionActiveClass(){
+  var btn = attribute_to_button[current_attribute];
+  var atr = current_avatar_attributes[current_attribute];
+  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
+  current_image.classList.add("active");
+}
+
 
 function randomize(){
   for(var i=0; i<attributes.length; i++){
     var max = attributes[i].length -1;
     var random_num = Math.floor(Math.random()*max);
     current_avatar_attributes[i] = random_num;
-    drawAvatar();
   }
+  drawAvatar();
 }
 
 function downloadAvatar(){
