@@ -33,23 +33,20 @@ function drawGame(){
   changeAttributeCategory(1,0);
   drawAttributeOptions();
 }
-// Make new canvas for avatar
-var can = document.getElementById("canvas1");
-var ctx = can.getContext("2d");
+
 
 function drawAvatar() {
-  
+  // Make new canvas for avatar
+  var can = document.getElementById("canvas1");
+  var ctx = can.getContext("2d");
   // Calculate & set the dimension of the canvas
   var canSize = window.innerHeight*.6;
   if(window.innerHeight*.6 > window.innerWidth){
       canSize = window.innerWidth;
   }
   canSize = canSize*.75
-  
   ctx.canvas.width  = canSize;
   ctx.canvas.height = canSize;
-  ctx.fillRect(0, 0, canSize, canSize);
-
   
   // create an array with each attribute in the correct order
   images = []
@@ -89,15 +86,15 @@ function drawAttributeOptions(){
   }
 
   // trying to lazy load the images when the category changes
-  // const images = document.getElementById("options_div").getElementsByTagName("img");
-  // for (let image of images) {
-  //   image.addEventListener("load", fadeImg);
-  //   image.style.opacity = "0";
-  // }
-  // function fadeImg () {
-  //   this.style.transition = "opacity 2s";
-  //   this.style.opacity = "1";
-  // }
+  const images = document.getElementById("options_div").getElementsByTagName("img");
+  for (let image of images) {
+    image.addEventListener("load", fadeImg);
+    image.style.opacity = "0";
+  }
+  function fadeImg () {
+    this.style.transition = "1s";
+    this.style.opacity = "1";
+  }
 }
 
 function changeAttributeCategory(attr, butn){
@@ -131,16 +128,53 @@ function randomize(){
 }
 
 function downloadAvatar(){
+    // create a large canvas, so we can export a large image 
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext("2d");
+    var canSize = 1800;
+    
+    ctx.canvas.width  = canSize;
+    ctx.canvas.height = canSize;
+    ctx.fillRect(0, 0, canSize, canSize);
+  
+    
+    // create an array with each attribute in the correct order
+    images = []
+    for(var i=0; i<current_avatar_attributes.length; i++){
+      var temp_img = new Image();
+      temp_img.src = attributes[i][current_avatar_attributes[i]];
+      images.push(temp_img);
+    }  
+  
+    // Checks if every image has loaded, if yes then it calls createAvatar()
+    var images_loaded = 0;
+    for(var i=0; i<images.length; i++){
+      images[i].onload = function () {
+        images_loaded++;
+        if(images_loaded == attribute_count){
+          createAvatar();
+        }
+      }
+    }
+    // Adds all appropriate attributes to the canvas in the correct order
+    function createAvatar(){
+      for(var i=0; i<images.length; i++){
+        ctx.drawImage(images[i], 0,0,canSize,canSize);
+      }
+      saveFile();
+    }
 
-  const canvas = document.getElementById('canvas1');
-  const img = canvas.toDataURL('image/png');
+    // download the image from the newly generated canvas
+    function saveFile(){
+      const img = canvas.toDataURL('image/png');
+      var a = $("<a>")
+        .attr("href", img)
+        .attr("download", "doodledog.png")
+        .appendTo("body");
+      a[0].click();
+      a.remove();
+    }
 
-  var a = $("<a>")
-    .attr("href", img)
-    .attr("download", "doodledog.png")
-    .appendTo("body");
-  a[0].click();
-  a.remove();
 }
 
 // jquery stuff
@@ -149,14 +183,14 @@ function downloadAvatar(){
 $(document).ready(function(){
   $('.options_slick').slick({
     dots: false,
-    infinite: true,
-    speed: 300,
+    infinite: false,
+    speed: 800,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     // lazyLoad: 'progressive',
     // prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
     // nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-    centerMode: true
+    centerMode: false
   });
 });
 
