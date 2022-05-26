@@ -16,7 +16,7 @@ html, body{
     font-family: "Grandstander", Sans-serif;
     background-image:url(img/Doodle-Dogs-Compilation-Background-min.png);
     background-repeat: repeat;
-    background-size: 150%;
+    background-size: 80%;
     background-attachment: fixed;
 }
 
@@ -55,7 +55,7 @@ button:hover:not(.slick-next):not(.slick-prev){
     width:100%;
 }
 #logo_pic{
-    height:5vh;
+    height:min(5vh,5vw);
     padding-left: 3%;
     padding-top:0;
 }
@@ -73,7 +73,7 @@ button:hover:not(.slick-next):not(.slick-prev){
     100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
 }
 #bubblegum_pic{
-    height:5vh;
+    height:min(5vh,5vw);
     float:right;
     padding-right:3%;
 }
@@ -87,13 +87,14 @@ button:hover:not(.slick-next):not(.slick-prev){
 
 /* The title of the game (with gradient effects) */
 .title-div h1{
-    font-size: 7vw;
+    font-size: min(7vh,7vw);
     font-weight:bold;
     text-align: center;
     margin-left:10;
     margin-right:10;
     margin:10px;
     padding:5;
+    -webkit-text-stroke: 1px black;
 }
 .gradient-text
 {
@@ -125,17 +126,18 @@ button:hover:not(.slick-next):not(.slick-prev){
 /* the main game div */
 .game {
     background-color: rgba(255, 255, 255,.85);
-    width: 85%;
+    width: min(85vh, 85vw);
     margin: auto;
-    margin-top:10vh;
-    padding-bottom:5vh;
-    padding-left: 6vw;
-    padding-right:6vw;
+    margin-top: min(10vh,10vw);
+    padding-bottom: min(5vh, 5vw);
+    padding-left: min(6vw, 6vh);
+    padding-right:min(6vw, 6vh);
     /* padding-left: min(6vw,6vh);
     padding-right: min(6vw,6vh); */
-    padding-top:4vh;
+    padding-top:min(4vh, 4vw);
     border-radius:8px;
-    margin-bottom: 10vh;
+    margin-bottom: min(10vh,10vw);
+    
 }
 
 
@@ -146,8 +148,8 @@ button:hover:not(.slick-next):not(.slick-prev){
     align-items: center;
 }
 .randomize_wrapper button{
-    font-size: min(2.5vw, 20px);
-    padding:1vh;
+    font-size: min(2.5vw, 2.5vh);
+    padding:min(1vh,1vw);
     margin:0;
     background-color:var(--gray);
 }
@@ -158,8 +160,8 @@ button:hover:not(.slick-next):not(.slick-prev){
     border-radius: 8px;
     padding-left: 0;
     padding-right: 0;
-    margin-bottom:1vh;
-    margin-top:1vh;
+    margin-bottom: min(1vh, 1v1);
+    margin-top:min(1vh, 1vw);
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -175,49 +177,34 @@ button:hover:not(.slick-next):not(.slick-prev){
     background-color: var(--purple);
 }
 
-
-/* the options */
-/* #options_div{
-    height:fit-content;
-} */
-/* #options_div img{
-    display: inline-block;
-    height:12vw;
-    border: solid 3px white;
-    transition: background-color 10s ease;
-    transition-duration: 0.3s ;
-    display: flex;
-    background-color: #9153ff;
-    border-radius:8px;
-} */
 #options_div img:hover{
     /* transition: background-color 10s ease; */
     background-color: var(--purple);
 }
 div.options_slick {
-    margin-top:1vh;
+    margin-top:min(1vh, 1vw);
     background-color: var(--lightgray);
-    width: 80vw;
+    width: min(80vw, 80vh);
     height:fit-content;
     display: flex;
     flex-wrap: no-wrap;
     overflow-x: auto;
     border-radius:8px;
-    padding:1vh;
+    padding:min(1vh,1vw);
 }
 div.options_slick img{
     display: inline-block;
-    height:12vw;
+    height:min(12vh,12vw);
     border: solid 3px white;
     transition: background-color 10s ease;
     transition-duration: 0.3s ;
     display: flex;
     background-color: var(--pink);
     border-radius:8px;
-    margin-left:1vh;
-    margin-right:1vh;
-    margin:1vh;
-    box-shadow: 0 0 .7vw .7vw var(--gray);
+    margin-left:min(1vh,1vw);
+    margin-right:min(1vh,1vw);
+    margin:min(1vh,1vw);
+    box-shadow: 0 0 min(.7vw,.7vh) min(.7vw,.7vh) var(--gray);
 }
 div.options_slick .active{
     border: solid 3px var(--green);
@@ -234,8 +221,8 @@ div.options_slick .active{
 }
 .lower_buttons button{
     background-color: rgb(104,230,92);
-    margin-top:3.5vh;
-    font-size: min(4vw, 30px);
+    margin-top:min(3.5vh,3.5vw);
+    font-size: min(4vw, 4vh);
     padding:2%;
 }
 

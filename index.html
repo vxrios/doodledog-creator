@@ -20,7 +20,7 @@
         </div>
         <div class="game">
             <div class="title-div col-md-12 text-center">
-                <h1 class="gradient-text">Create your own Doodle Dog!</h1>
+                <h1 class="gradient-text">Create a Doodle Dog!</h1>
             </div>
             <div class="randomize_wrapper">
                 <button type="button" class="randomize_button" class="category_button" onclick="randomize()">Randomize</button>
@@ -35,12 +35,13 @@
                 <button type="button" onclick="changeAttributeCategory(3,3)" class="category_button">Face</button>
                 <button type="button" onclick="changeAttributeCategory(0,4)" class="category_button">Background</button>
             </div>
-            <div class="options_slick fur" id="options_div"></div>
-            <div class="options_slick hat" id="options_div"></div>
-            <div class="options_slick shirt" id="options_div"></div>
-            <div class="options_slick face" id="options_div"></div>
-            <div class="options_slick background" id="options_div"></div>
-
+            <div class="option_wrapper">
+                <div class="options_slick fur" id="options_div"></div>
+                <div class="options_slick hat" id="options_div"></div>
+                <div class="options_slick shirt" id="options_div"></div>
+                <div class="options_slick face" id="options_div"></div>
+                <div class="options_slick background" id="options_div"></div>
+            </div>
             <div class="lower_buttons">
                 <button type="button" id="download_button" onclick="downloadAvatar()">Download Image ⬇</button>
                 <!-- <a download="img.png" id="download_button" onclick="downloadAvatar()">Download Image ⬇</button>  -->
