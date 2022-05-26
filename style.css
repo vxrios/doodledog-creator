@@ -172,7 +172,7 @@ button:hover:not(.slick-next):not(.slick-prev){
     display: flex;
 }
 #category_div .button:active, .active{
-    background-color: rgba(251,161,215,255);
+    background-color: var(--purple);
 }
 
 
@@ -192,7 +192,7 @@ button:hover:not(.slick-next):not(.slick-prev){
 } */
 #options_div img:hover{
     /* transition: background-color 10s ease; */
-    background-color: rgba(251,161,215,255);
+    background-color: var(--purple);
 }
 div.options_slick {
     margin-top:1vh;
@@ -212,29 +212,18 @@ div.options_slick img{
     transition: background-color 10s ease;
     transition-duration: 0.3s ;
     display: flex;
-    background-color: var(--purple);
+    background-color: var(--pink);
     border-radius:8px;
     margin-left:1vh;
     margin-right:1vh;
-    /* margin-bottom:0.5vh; */
     margin:1vh;
+    box-shadow: 0 0 .7vw .7vw var(--gray);
+}
+div.options_slick .active{
+    border: solid 3px var(--green);
+    /* box-shadow: 0 0 1vw 1vw var(--gray); */
 }
 
-
-/* slick img */
-.slick-slide img{
-    display:block;
-    margin:auto;
-}
-/* slick arrows */
-.slick-prev:before {
-    color: rgb(60,176,241) !important;
-    font-size: 5vw !important;
-}
-.slick-next:before {
-  color: rgb(60,176,241) !important;
-  font-size: 5vw !important; 
-}
 
 
 /* download image button */

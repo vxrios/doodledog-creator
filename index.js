@@ -3,6 +3,7 @@ function initialize(){
     // window.addEventListener('resize', drawGame, false);
     randomize();
     drawGame();
+    initializeActiveOptions();
 }
 
 var attribute_names = ["Background", "Fur", "Shirt", "Face", "Hat"];
@@ -21,8 +22,12 @@ var attribute_count = 5;
 var current_attribute = 0;
 var current_option = 0;
 var current_button = 0;
+var attribute_to_button = {1: 0,
+                            4:1,
+                            2:2,
+                            3:3,
+                            0:4}
 
-// bg.src = "layers/Background/blue-10.png"
 function drawGame(){
   drawAvatar();
   changeAttributeCategory(1,0);
@@ -107,10 +112,27 @@ function changeAttributeCategory(attr, butn){
 }
 
 function changeAttributeOption(option){
+  // remove active class to current attribute
+  var btn = attribute_to_button[current_attribute];
+  var atr = current_avatar_attributes[current_attribute];
+  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
+  current_image.classList.remove("active");
+
+  // change current attribute
   current_option = option;
   current_avatar_attributes[current_attribute] = option;
+
+  // add active class to current attribute
+  var btn = attribute_to_button[current_attribute];
+  var atr = current_avatar_attributes[current_attribute];
+  var current_image = document.getElementsByClassName("option_wrapper")[0].children[btn].children[atr];
+  current_image.classList.add("active");
+
+  // redraw avatar
   drawAvatar();
 }
+// function initializeActiveOptions();
+
 function randomize(){
   for(var i=0; i<attributes.length; i++){
     var max = attributes[i].length -1;
