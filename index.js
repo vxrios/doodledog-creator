@@ -14,6 +14,7 @@ var shirt_src = ['img/layers/shirt/Nurse-50.png', 'img/layers/shirt/T_Shirt_Gree
 var type_src = ['img/layers/Type/Chromie.png', 'img/layers/Type/Tetris.png', 'img/layers/Type/Angel.png', 'img/layers/Type/Doggo_Living_Room.png', 'img/layers/Type/Alien.png', 'img/layers/Type/Demon.png'];
 
 var attributes = [background_src, fur_src, shirt_src, face_src, hat_src]
+var attribute_names = ["background", "fur","shirt", "face", "hat"]
 // var attributes = [hat_src, face_src, shirt_src, fur_src, background_src]
 var current_avatar_attributes = [0, 0, 0, 0, 0];
 var attribute_count = 5;
@@ -25,9 +26,18 @@ var current_button = 0;
 function drawGame(){
   drawAvatar();
   changeAttributeCategory(1,0);
+  generateOptionSlides();
   drawAttributeOptions();
 }
-
+function generateOptionSlides(){
+  for(var i=0; i<attributes.length; i++){
+    ar = attributes[i];
+    for(var j=0; j<ar.length; j++){
+      class_name = "." + attribute_names[i];
+      $(class_name).append($('<img>',{src:attributes[i][j],onclick:"changeAttributeOption(" + j + ")"}));
+    }
+  }
+}
 
 function drawAvatar() {
   // Make new canvas for avatar
@@ -70,24 +80,14 @@ function drawAvatar() {
 
 
 function drawAttributeOptions(){
-  // remove all slides
-  $('.options_slick').slick('removeSlide', null, null, true);
-
-  //add slides for current attribute
-  for(var i=0; i<attributes[current_attribute].length; i++){
-    $('.options_slick').slick('slickAdd','<div><img src=' + attributes[current_attribute][i] + ' onclick="changeAttributeOption(' + i + ')" class="option_button"></h3></div>');
+  // make all div slides dissapear
+  for(var i=0; i<attribute_count; i++){
+    var tempClassName = "." + attribute_names[i];
+    $(tempClassName).hide();
   }
-
-  // trying to lazy load the images when the category changes
-  const images = document.getElementById("options_div").getElementsByTagName("img");
-  for (let image of images) {
-    image.addEventListener("load", fadeImg);
-    image.style.opacity = "0";
-  }
-  function fadeImg () {
-    this.style.transition = "1s";
-    this.style.opacity = "1";
-  }
+  //show the div for the current attribute
+  var className = "." + attribute_names[current_attribute];
+  $(className).show();
 }
 
 function changeAttributeCategory(attr, butn){

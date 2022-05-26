@@ -195,7 +195,7 @@ button:hover:not(.slick-next):not(.slick-prev){
     background-color: rgba(251,161,215,255);
 }
 div.options_slick {
-    margin:1vh;
+    margin-top:1vh;
     background-color: var(--lightgray);
     width: 80vw;
     height:fit-content;
@@ -203,10 +203,9 @@ div.options_slick {
     flex-wrap: no-wrap;
     overflow-x: auto;
     border-radius:8px;
-    /* margin: 20px; */
+    padding:1vh;
 }
 div.options_slick img{
-    display: inline-block;
     display: inline-block;
     height:12vw;
     border: solid 3px white;
