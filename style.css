@@ -213,7 +213,8 @@ div.options_slick img{
     box-shadow: 0 0 min(.7vw,.7vh) min(.7vw,.7vh) var(--gray);
 }
 div.options_slick .active{
-    border: solid 3px var(--green);
+    /* border: solid 3px var(--green); */
+    box-shadow: 0 0 min(.7vw,.7vh) min(.7vw,.7vh) var(--green);
     /* box-shadow: 0 0 1vw 1vw var(--gray); */
 }
 
