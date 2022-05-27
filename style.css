@@ -148,8 +148,8 @@ button:hover:not(.slick-next):not(.slick-prev){
     align-items: center;
 }
 .randomize_wrapper button{
-    font-size: min(2.5vw, 2.5vh);
-    padding:min(1vh,1vw);
+    font-size:min(4vh,4vw);
+    padding:min(1.5vh,1.5vw);
     margin:0;
     background-color:var(--gray);
 }
@@ -176,6 +176,9 @@ button:hover:not(.slick-next):not(.slick-prev){
     justify-content: center;
     display: flex;
 }
+#category_div button{
+    font-size:min(5vh,5vw);
+}
 #category_div .button:active, .active{
     background-color: var(--purple);
 }
@@ -197,7 +200,7 @@ div.options_slick {
 }
 div.options_slick img{
     display: inline-block;
-    height:min(12vh,12vw);
+    height:min(21vh,21vw);
     border: solid 3px white;
     transition: background-color 10s ease;
     transition-duration: 0.3s ;
