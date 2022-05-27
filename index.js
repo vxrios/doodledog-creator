@@ -2,6 +2,7 @@
 function initialize(){
     // window.addEventListener('resize', drawGame, false);
     drawGame();
+    drawGame(); //doing it again to prefent missing fur??
     initOptionActiveClass();
 }
 
