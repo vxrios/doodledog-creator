@@ -2,7 +2,6 @@
 function initialize(){
     // window.addEventListener('resize', drawGame, false);
     drawGame();
-    drawGame(); //doing it again to prefent missing fur??
     initOptionActiveClass();
 }
 
@@ -29,10 +28,11 @@ var attribute_to_button = {1: 0,
                             0:4}
 
 function drawGame(){
-  drawAvatar();
+  sizeCanvas();
   changeAttributeCategory(1,0);
   generateOptionSlides();
   drawAttributeOptions();
+  drawAvatar(); //moving this last so all images are already loaded
 }
 function generateOptionSlides(){
   for(var i=0; i<attributes.length; i++){
@@ -43,9 +43,7 @@ function generateOptionSlides(){
     }
   }
 }
-
-function drawAvatar() {
-  // Make new canvas for avatar
+function sizeCanvas(){
   var can = document.getElementById("canvas1");
   var ctx = can.getContext("2d");
   // Calculate & set the dimension of the canvas
@@ -56,6 +54,12 @@ function drawAvatar() {
   canSize = canSize*.75
   ctx.canvas.width  = canSize;
   ctx.canvas.height = canSize;
+}
+function drawAvatar() {
+  // Make new canvas for avatar
+  var can = document.getElementById("canvas1");
+  var ctx = can.getContext("2d");
+  canSize = ctx.canvas.width;
   
   // create an array with each attribute in the correct order
   images = []
@@ -229,21 +233,3 @@ function downloadAvatar(){
     }
 
 }
-
-// jquery stuff
-
-//
-// $(document).ready(function(){
-//   $('.options_slick').slick({
-//     dots: false,
-//     infinite: false,
-//     speed: 800,
-//     slidesToShow: 4,
-//     slidesToScroll: 4,
-//     // lazyLoad: 'progressive',
-//     // prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-//     // nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-//     centerMode: false
-//   });
-// });
-
